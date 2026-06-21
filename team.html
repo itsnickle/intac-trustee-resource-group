@@ -686,7 +686,36 @@ var nfRepeater = {"add_repeater_child_field_text":"Add "};
     <button id="nf-field-{{{ data.id }}}" name="nf-field-{{{ data.id }}}" class="{{{ data.classes }}} nf-element">
         {{{ _.escape( data.label ) }}}
     </button>
-</script></body>
+</script>
+<style id="trg-cleanup-css">
+img.cleanup-broken{display:none!important}
+#row-unique-9{display:none!important}            /* OUR COMMERCIAL CARRIERS (partner logos unrecoverable) */
+.trg-empty-row{display:none!important}
+</style>
+<script id="trg-cleanup-js">
+(function(){
+  function hide(img){
+    img.classList.add('cleanup-broken');
+    // if the image was the only meaningful content of its row, collapse the row
+    var row = img.closest('.vc_row,.row-container,.wpb_row,.uncell');
+    if(row){
+      var live = row.querySelectorAll('img:not(.cleanup-broken)');
+      var txt = (row.textContent||'').replace(/\s+/g,'').length;
+      if(live.length===0 && txt < 3) row.classList.add('trg-empty-row');
+    }
+  }
+  window.addEventListener('error',function(e){
+    if(e.target && e.target.tagName==='IMG') hide(e.target);
+  },true);
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('img').forEach(function(img){
+      img.addEventListener('error',function(){hide(img);});
+      if(img.complete && img.naturalWidth===0 && img.getAttribute('src')) hide(img);
+    });
+  });
+})();
+</script>
+</body>
 </html>
 
 
