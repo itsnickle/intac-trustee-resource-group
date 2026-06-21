@@ -677,6 +677,36 @@ img.cleanup-broken{display:none!important}
   });
 })();
 </script>
+
+<script id="trg-bgfix">
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('*').forEach(function(el){
+    var bg=getComputedStyle(el).backgroundImage;
+    if(!bg||bg==='none'||bg.indexOf('assets/')<0) return;
+    var m=bg.match(/url\(["']?([^"')]+)["']?\)/);
+    if(!m) return;
+    var probe=new Image();
+    probe.onerror=function(){ el.style.backgroundColor='#641928'; el.style.backgroundImage='none'; };
+    probe.src=m[1];
+  });
+});
+</script>
+
+<script id="trg-collapse">
+document.addEventListener('DOMContentLoaded',function(){
+  setTimeout(function(){
+    document.querySelectorAll('div[id^="row-unique"], .vc_row.row-container').forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.height<90) return;
+      var txt=(el.innerText||'').replace(/\s+/g,'').length;
+      var imgs=Array.prototype.slice.call(el.querySelectorAll('img')).filter(function(i){return i.offsetParent!==null && i.naturalWidth>0;}).length;
+      var bgc=getComputedStyle(el).backgroundColor;
+      var plain = (bgc==='rgba(0, 0, 0, 0)'||bgc==='rgb(255, 255, 255)'||bgc==='transparent');
+      if(txt<3 && imgs===0 && plain){ el.style.display='none'; }
+    });
+  }, 500);
+});
+</script>
 </body>
 </html>
 
