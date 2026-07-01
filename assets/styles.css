@@ -157,3 +157,114 @@ form.submitting .wpcf7-spinner {
 .wpcf7 input[type="tel"] {
 	direction: ltr;
 }
+
+@media (max-width: 640px) {
+	html,
+	body {
+		max-width: 100%;
+		overflow-x: hidden;
+	}
+
+	body .row-container,
+	body .row,
+	body .row-parent,
+	body .wpb_row,
+	body .row-inner,
+	body .uncol,
+	body .uncoltable,
+	body .uncell,
+	body .uncont {
+		box-sizing: border-box;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+
+	body .row,
+	body .wpb_row,
+	body .row-inner {
+		left: auto !important;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		right: auto !important;
+		transform: none !important;
+	}
+
+	body .row-parent,
+	body .limit-width {
+		padding-left: 24px !important;
+		padding-right: 24px !important;
+	}
+
+	body .wpb_column {
+		box-sizing: border-box;
+		flex: 0 0 100% !important;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+
+	body .heading-text,
+	body .uncode_text_column,
+	body .uncode_text_column p {
+		box-sizing: border-box;
+		max-width: calc(100vw - 48px) !important;
+		overflow-wrap: break-word !important;
+		width: 100% !important;
+	}
+
+	body .heading-text h1,
+	body .heading-text h1 span,
+	body .main-container .h1 {
+		font-size: 27px !important;
+		letter-spacing: 0 !important;
+		line-height: 1.16 !important;
+		max-width: 100% !important;
+		overflow-wrap: break-word !important;
+		white-space: normal !important;
+	}
+
+	body .heading-text h1 span {
+		display: block !important;
+	}
+
+	body .heading-text h3,
+	body .heading-text h3 span,
+	body .main-container .h3 {
+		font-size: 19px !important;
+		letter-spacing: 0 !important;
+		line-height: 1.28 !important;
+		white-space: normal !important;
+	}
+
+	body .navbar-brand img,
+	body .logo-image img {
+		height: auto !important;
+		max-width: 250px !important;
+	}
+
+	#trg-team-wrap {
+		padding: 48px 20px !important;
+	}
+
+	#trg-team-grid {
+		display: block !important;
+	}
+
+	.trg-m {
+		margin: 0 auto 30px;
+		width: 100% !important;
+	}
+
+	.trg-m img {
+		height: 220px !important;
+		width: 220px !important;
+	}
+}
+
+@media (max-width: 420px) {
+	body .heading-text h1,
+	body .heading-text h1 span,
+	body .main-container .h1 {
+		font-size: 27px !important;
+		line-height: 1.16 !important;
+	}
+}
